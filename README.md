@@ -1,4 +1,4 @@
-# Demo of CLI for Turing and Tensorboard test
+# Demo of CLI for Turing and Tensorboard
 
 ## Installation
 Do an
