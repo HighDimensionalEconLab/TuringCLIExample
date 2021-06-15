@@ -1,9 +1,11 @@
 # Demo of CLI for Turing and Tensorboard
 
+
 ## Installation
 Do an
 Then
 `julia --project -e "using Pkg; Pkg.instantiate()"`
+
 ## CLI Usage
 To use with default options
 ```bash
