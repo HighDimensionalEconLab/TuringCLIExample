@@ -199,6 +199,41 @@ git-tree-sha1 = "7b8a93dba8af7e3b42fecabf646260105ac373f7"
 uuid = "bbf7d656-a473-5ed7-a52c-81e309532950"
 version = "0.3.0"
 
+[[Comonicon]]
+deps = ["ComoniconBuilder", "ComoniconOptions", "ComoniconTargetExpr", "ComoniconTypes", "ComoniconZSHCompletion", "Configurations", "ExproniconLite", "Markdown", "Pkg"]
+git-tree-sha1 = "79cedcaf7a494c8392550c772ff052f3b80f62d0"
+uuid = "863f3e99-da2a-4334-8734-de3dacbe5542"
+version = "0.11.5"
+
+[[ComoniconBuilder]]
+deps = ["ComoniconOptions", "ComoniconTypes", "ComoniconZSHCompletion", "Libdl", "Logging", "PackageCompiler"]
+git-tree-sha1 = "ee5bed6c16e03a1f94abfc3f4e2cbcc48418a416"
+uuid = "0acea522-3a8c-4b93-9211-1fc67cbf95d9"
+version = "0.1.3"
+
+[[ComoniconOptions]]
+deps = ["Configurations", "TOML"]
+git-tree-sha1 = "6bccde2fae402b82305b0b97e97ac39ffe0106d9"
+uuid = "a25bc8ac-9d24-42b2-8edd-3d267ec19fc5"
+version = "0.1.1"
+
+[[ComoniconTargetExpr]]
+deps = ["ComoniconOptions", "ComoniconTypes", "ExproniconLite"]
+git-tree-sha1 = "09a7757ec0dca37558c399fe41ebf4541897203b"
+uuid = "d6dfd36b-42f3-4a9f-a1cb-6f1a052fed42"
+version = "0.2.3"
+
+[[ComoniconTypes]]
+git-tree-sha1 = "3ed67384a353e88a9140db8bf274aee75af9d36a"
+uuid = "d0eb39ce-029e-40d1-add6-e32b3165f6a3"
+version = "0.2.0"
+
+[[ComoniconZSHCompletion]]
+deps = ["ComoniconTypes"]
+git-tree-sha1 = "225ff13b22f4c88aeb70ce20e89b016c1897790b"
+uuid = "dcf03e4a-d036-4ede-96c9-024e9e9eed12"
+version = "0.2.0"
+
 [[Compat]]
 deps = ["Base64", "Dates", "DelimitedFiles", "Distributed", "InteractiveUtils", "LibGit2", "Libdl", "LinearAlgebra", "Markdown", "Mmap", "Pkg", "Printf", "REPL", "Random", "SHA", "Serialization", "SharedArrays", "Sockets", "SparseArrays", "Statistics", "Test", "UUIDs", "Unicode"]
 git-tree-sha1 = "0900bc19193b8e672d9cd477e6cd92d9e7c02f99"
@@ -213,6 +248,12 @@ uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
 git-tree-sha1 = "f3955eb38944e5dd0fabf8ca1e267d94941d34a5"
 uuid = "a33af91c-f02d-484b-be07-31d278c5ca2b"
 version = "0.1.0"
+
+[[Configurations]]
+deps = ["Crayons", "ExproniconLite", "OrderedCollections", "TOML"]
+git-tree-sha1 = "b8486a417456d2fbbe2af13e24cef459c9f42429"
+uuid = "5218b696-f38b-4ac9-8b61-a12ec717816d"
+version = "0.15.4"
 
 [[ConsoleProgressMonitor]]
 deps = ["Logging", "ProgressMeter"]
@@ -352,6 +393,11 @@ git-tree-sha1 = "b3bfd02e98aedfa5cf885665493c5598c350cd2f"
 uuid = "2e619515-83b5-522b-bb60-26c02a35a201"
 version = "2.2.10+0"
 
+[[ExproniconLite]]
+git-tree-sha1 = "c97ce5069033ac15093dc44222e3ecb0d3af8966"
+uuid = "55351af7-c7e9-48d6-89ff-24e801d99491"
+version = "0.6.9"
+
 [[FFMPEG]]
 deps = ["FFMPEG_jll", "x264_jll"]
 git-tree-sha1 = "9a73ffdc375be61b0e4516d83d880b265366fe1f"
@@ -372,9 +418,9 @@ version = "1.4.1"
 
 [[FFTW_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "5a0d4b6a22a34d17d53543bd124f4b08ed78e8b0"
+git-tree-sha1 = "3676abafff7e4ff07bbd2c42b3d8201f31653dcc"
 uuid = "f5851436-0d7a-5f13-b9de-f02708fd171a"
-version = "3.3.9+7"
+version = "3.3.9+8"
 
 [[FileIO]]
 deps = ["Pkg", "Requires", "UUIDs"]
@@ -685,9 +731,9 @@ version = "1.36.0+3"
 
 [[Libiconv_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "8d22e127ea9a0917bc98ebd3755c8bd31989381e"
+git-tree-sha1 = "42b62845d70a619f063a7da093d995ec8e15e778"
 uuid = "94ce4f54-9a6c-5748-9c1c-f9c7231a4531"
-version = "1.16.1+0"
+version = "1.16.1+1"
 
 [[Libmount_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -926,6 +972,12 @@ deps = ["LinearAlgebra", "SparseArrays", "SuiteSparse"]
 git-tree-sha1 = "f82a0e71f222199de8e9eb9a09977bd0767d52a0"
 uuid = "90014a1f-27ba-587c-ab20-58faa44d9150"
 version = "0.11.0"
+
+[[PackageCompiler]]
+deps = ["Libdl", "Pkg", "UUIDs"]
+git-tree-sha1 = "363f8327031df2b64942d4d17c13a8f8b3641300"
+uuid = "9b87118b-4619-50d2-8e1e-99f35a4d4d9d"
+version = "1.2.6"
 
 [[PaddedViews]]
 deps = ["OffsetArrays"]
