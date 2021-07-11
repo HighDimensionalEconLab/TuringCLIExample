@@ -23,3 +23,5 @@ docs/site/
 # environment.
 #Manifest.toml
 tensorboard_logs/*
+test/tensorboard_logs/*
+JuliaSysimage.dll

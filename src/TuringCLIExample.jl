@@ -21,45 +21,45 @@ using Turing, TuringCallbacks, TensorBoardLogger, StatsPlots, CSV, DataFrames
     alg = NUTS(num_adapts, target_acceptance_rate)
     chain = sample(model, alg, num_samples; callback)
 
-#     println("Generating trace plot")
-#     trace_plot = plot(chain, seriestype=:traceplot)
-#     savefig(trace_plot,  joinpath(callback.logger.logdir, "traceplots.png"))
+    println("Generating trace plot")
+    trace_plot = plot(chain, seriestype=:traceplot)
+    savefig(trace_plot,  joinpath(callback.logger.logdir, "traceplots.png"))
 
 
-#     println("Summarizing the chain")
-#     sum_stats = describe(chain)
-#     param_names = sum_stats[1][:,1]
-#     param_mean = sum_stats[1][:,2]
-#     param_sd = sum_stats[1][:,3]
-#     param_ess = sum_stats[1][:,6]
-#     param_rhat = sum_stats[1][:,7]
-#     param_ess_per_sec = sum_stats[1][:, 8]
+    println("Summarizing the chain")
+    sum_stats = describe(chain)
+    param_names = sum_stats[1][:,1]
+    param_mean = sum_stats[1][:,2]
+    param_sd = sum_stats[1][:,3]
+    param_ess = sum_stats[1][:,6]
+    param_rhat = sum_stats[1][:,7]
+    param_ess_per_sec = sum_stats[1][:, 8]
 
-#     CSV.write(
-#         joinpath(callback.logger.logdir, "summary.csv"),
-#         DataFrame(
-#             parameter=param_names, 
-#             mean=param_mean, 
-#             sd=param_sd, 
-#             ess=param_ess, 
-#             rhat=param_rhat, 
-#             ess_per_sec= param_ess_per_sec
-#         )
-#     )
+    CSV.write(
+        joinpath(callback.logger.logdir, "summary.csv"),
+        DataFrame(
+            parameter=param_names, 
+            mean=param_mean, 
+            sd=param_sd, 
+            ess=param_ess, 
+            rhat=param_rhat, 
+            ess_per_sec= param_ess_per_sec
+        )
+    )
 
-#     # Log the ESS/sec and rhat.  Nice to show as summary results from tensorboard
-#     for (i, name) = enumerate(param_names)
-#         TensorBoardLogger.log_value(
-#             callback.logger,
-#             "$(name)_ess_per_sec",
-#             param_ess_per_sec[i],
-#         )
-#         TensorBoardLogger.log_value(
-#             callback.logger,
-#             "$(name)_rhat",
-#             param_rhat[i],
-#         )
-#     end
+    # Log the ESS/sec and rhat.  Nice to show as summary results from tensorboard
+    for (i, name) = enumerate(param_names)
+        TensorBoardLogger.log_value(
+            callback.logger,
+            "$(name)_ess_per_sec",
+            param_ess_per_sec[i],
+        )
+        TensorBoardLogger.log_value(
+            callback.logger,
+            "$(name)_rhat",
+            param_rhat[i],
+        )
+    end
 end
 @main
 # using Turing, TuringCallbacks, TensorBoardLogger, ArgParse, StatsPlots, CSV, DataFrames
