@@ -1,30 +1,25 @@
 module TuringCLIExample
 
 using Comonicon
-#using Turing, TuringCallbacks, TensorBoardLogger, StatsPlots, CSV, DataFrames
+using Turing, TuringCallbacks, TensorBoardLogger, StatsPlots, CSV, DataFrames
 
-function my_plot(num_samples)
-    @show num_samples
-end
-@cast function rbc(; num_samples::Int = 10000, num_adapts::Int = 100, target_acceptance_rate::Float64 = 0.65, s_prior_alpha::Float64 = 2.0, s_prior_theta::Float64 = 3.0, prior::NamedTuple{(:mean, :std), Tuple{Float64, Float64}} = (;mean = 2.0, std = 4.0))
-    my_plot(num_samples)
-    @show prior
-    # @model function demo(x; s_prior_alpha, s_prior_theta)
-    #     s ~ InverseGamma(s_prior_alpha, s_prior_theta)
-    #     m ~ Normal(0, √s)
-    #     for i in eachindex(x)
-    #         x[i] ~ Normal(m, √s)
-    #     end
-    # end
+@cast function rbc(; num_samples::Int = 1000, num_adapts::Int = 100, target_acceptance_rate::Float64 = 0.65, s_prior_alpha::Float64 = 2.0, s_prior_theta::Float64 = 3.0)
+    @model function demo(x; s_prior_alpha, s_prior_theta)
+        s ~ InverseGamma(s_prior_alpha, s_prior_theta)
+        m ~ Normal(0, √s)
+        for i in eachindex(x)
+            x[i] ~ Normal(m, √s)
+        end
+    end
 
-    # xs = randn(100) .+ 1
-    # model = demo(xs; s_prior_alpha, s_prior_theta)
+    xs = randn(100) .+ 1
+    model = demo(xs; s_prior_alpha, s_prior_theta)
 
-    # # Sampling
-    # println("Generating $num_samples samples")
-    # callback = TensorBoardCallback("tensorboard_logs/run")
-    # alg = NUTS(num_adapts, target_acceptance_rate)
-    # chain = sample(model, alg, num_samples; callback)
+    # Sampling
+    println("Generating $num_samples samples")
+    callback = TensorBoardCallback("tensorboard_logs/run")
+    alg = NUTS(num_adapts, target_acceptance_rate)
+    chain = sample(model, alg, num_samples; callback)
 
 #     println("Generating trace plot")
 #     trace_plot = plot(chain, seriestype=:traceplot)
