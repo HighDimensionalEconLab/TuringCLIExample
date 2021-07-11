@@ -1,3 +1,0 @@
-using TuringCLIExample
-
-TuringCLIExample.main()
