@@ -176,20 +176,5 @@ end
 #     return parse_args(s)
 # end
 
-# # Can experiment later, or can package compiler 
-# # function _precompile_()
-# #     ccall(:jl_generating_output, Cint, ()) == 1 || return nothing
-# #     Base.precompile(Tuple{typeof(main)})
-# # end
 
-# # # Only really intended for final versions rather than during interactive use
-# # # NOTE: Consider commenting out or fix if changing signature of simulate_and_estimte
-# # if Base.VERSION >= v"1.4.2"
-# #     precompile(Tuple{typeof(TuringCLIExample.main)})
-    
-# #     # Is this necessary or does the main() above do it? Comment out if any problem.
-# #     precompile(Tuple{TuringCLIExample.var"#simulate_and_estimate##kw", NamedTuple{(:num_samples, :num_adapts, :target_acceptance_rate, :s_prior_theta, :s_prior_alpha), Tuple{Int64, Int64, Float64, Float64, Float64}}, typeof(TuringCLIExample.simulate_and_estimate)})
-
-# #     _precompile_()
-# # end
 end #module
