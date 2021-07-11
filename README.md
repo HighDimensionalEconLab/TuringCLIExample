@@ -1,9 +1,12 @@
 # Demo of CLI for Turing and Tensorboard
 
+
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/HighDimensionalEconLab/TuringCLIExample)
 ## Installation
 Do an
 Then
 `julia --project -e "using Pkg; Pkg.instantiate()"`
+
 ## CLI Usage
 To use with default options
 ```bash
